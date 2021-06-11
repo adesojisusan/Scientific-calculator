@@ -9,14 +9,24 @@ expression = ""
 def add(value):
     global expression
     expression += value
-    print(expression)
+    root_label.config(text=expression)
     
 def clear():
-    pass
+    global expression
+    expression = ""
+    root_label.config(text=expression)
+   
 
 def calculate():
     global expression
-    result = eval(expression)
+    result =""
+    if expression != "":
+        try:
+            result = eval(expression)
+           
+        except:
+            result="error"
+            expression = ""
     root_label.config(text= result)
 
 root_label= tkinter.Label(root, text='')
